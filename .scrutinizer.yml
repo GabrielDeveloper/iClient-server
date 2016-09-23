@@ -5,13 +5,15 @@ build:
     environment:
         node: v4.2.2
         mongodb: true 
+
     dependencies:
         before:
-            - cd server 
+            - npm install
+
     tests:
         override:
             -
-                command: './server/node_modules/.bin/istanbul cover ./server/node_modules/.bin/_mocha && ./server/node_modules/.bin/istanbul report clover'
+                command: 'cd server && ./node_modules/.bin/istanbul cover ./node_modules/.bin/_mocha && ./node_modules/.bin/istanbul report clover'
                 coverage:
-                    file: 'server/coverage/clover.xml'
+                    file: 'coverage/clover.xml'
                     format: 'clover'

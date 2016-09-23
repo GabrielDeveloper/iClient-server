@@ -2,6 +2,9 @@ language: node_js
 node_js:
     - "4.1"
 
+install:
+  - npm install -g codecov
+
 services:
   - mongodb
 
@@ -10,11 +13,9 @@ before_script:
     - npm install
     - mongo iclient_test --eval 'db.addUser("travis", "test");'
 
-script: npm run coverage
+script:
+    - npm run coverage
+    - codecov
 
-addons:
-    code_climate:
-        repo_token: 9c9336ed7c9c97efd40c5096b55ae9e34aeead4065a5a351ac086ff000970a9c
-
-after_script:
-  - codeclimate-test-reporter < lcov.info
+after_success:
+  - bash <(curl -s https://codecov.io/bash)

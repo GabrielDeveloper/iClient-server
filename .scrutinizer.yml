@@ -1,0 +1,17 @@
+checks:
+    javascript: true
+
+build:
+    environment:
+        node: v4.2.2
+        mongodb: true 
+    dependencies:
+        before:
+            - cd server 
+    tests:
+        override:
+            -
+                command: './node_modules/.bin/istanbul cover ./node_modules/.bin/_mocha && ./node_modules/.bin/istanbul report clover'
+                coverage:
+                    file: 'coverage/clover.xml'
+                    format: 'clover'

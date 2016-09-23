@@ -11,3 +11,10 @@ before_script:
     - mongo iclient_test --eval 'db.addUser("travis", "test");'
 
 script: npm run coverage
+
+addons:
+    code_climate:
+        repo_token: 9c9336ed7c9c97efd40c5096b55ae9e34aeead4065a5a351ac086ff000970a9c
+
+after_script:
+  - codeclimate-test-reporter < lcov.info

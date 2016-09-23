@@ -6,10 +6,6 @@ build:
         node: v4.2.2
         mongodb: true 
 
-    dependencies:
-        before:
-            - npm install
-
     tests:
         override:
             -

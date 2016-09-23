@@ -4,7 +4,10 @@ checks:
 build:
     environment:
         node: v4.2.2
-        mongodb: true 
+        mongodb: true
+    dependencies:
+        before:
+            - npm install istanbul   # or add it as part of your package.json 
 
     tests:
         override:

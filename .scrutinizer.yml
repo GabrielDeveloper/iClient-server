@@ -1,18 +1,6 @@
 checks:
     javascript: true
+filter:
+    excluded_paths:
+        - server/test/*
 
-build:
-    environment:
-        node: v4.2.2
-        mongodb: true
-    dependencies:
-        before:
-            - npm install istanbul   # or add it as part of your package.json 
-
-    tests:
-        override:
-            -
-                command: 'istanbul cover node_modules/.bin/_mocha'
-                coverage:
-                    file: 'coverage/clover.xml'
-                    format: 'clover'
